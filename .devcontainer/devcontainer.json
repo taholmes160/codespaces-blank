@@ -11,7 +11,7 @@
         // Other extensions as needed
     ],
   
-    "postCreateCommand": "bash .devcontainer/setup-docker.sh && pip install -r /workspace/codespaces-blank/requirements.txt",
+    "postCreateCommand": "bash .devcontainer/setup-docker.sh && bash .devcontainer/setup-venv.sh && pip install -r /workspace/codespaces-blank/requirements.txt",
   
     "settings": {
         "terminal.integrated.shell.linux": "/bin/bash"
