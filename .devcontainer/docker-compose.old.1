@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+  flaskapp:
+    image: mcr.microsoft.com/devcontainers/base:jammy
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/workspace
+    command: /bin/bash -c "pip3 install -r requirements.txt && python3 app.py"
+    depends_on:
+      - mariadb
+
+  mariadb:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: yourpassword
+      MYSQL_DATABASE: yourdatabase
+      MYSQL_USER: yourusername
+      MYSQL_PASSWORD: yourpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+volumes:
+  mariadb_data:
