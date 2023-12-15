@@ -10,5 +10,5 @@
 
   "forwardPorts": [3306, 5000],
 
-  "postCreateCommand": "sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove -y && sudo apt-get install -y mariadb-server && sudo service mariadb start && sudo mysql -e \"ALTER USER 'root'@'localhost' IDENTIFIED BY 'T3t0npack@160';\" && sudo apt-get install -y php php-mysql && sudo apt-get install -y wget && sudo wget https://www.adminer.org/latest.php -O /var/www/html/adminer.php && sudo service apache2 start"
+  "postCreateCommand": "sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove -y && sudo apt-get install -y mariadb-server && sudo service mariadb start && sudo mysql -e \"ALTER USER 'root'@'localhost' IDENTIFIED BY 'T3t0npack@160';\" && sudo apt-get install -y php php-mysql && sudo apt-get install -y wget && sudo wget https://www.adminer.org/latest.php -O /var/www/html/adminer.php && sudo sed -i 's/Listen 80/Listen 8080/' /etc/apache2/ports.conf && sudo service apache2 restart && sudo apt-get install -y python3-pip pkg-config"
 }
