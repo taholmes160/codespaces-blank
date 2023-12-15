@@ -1,23 +1,25 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/php-mariadb
 {
-	"name": "python & MariaDB",
-	"dockerComposeFile": "docker-compose.yml",
-	"service": "app",
-	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "name": "Python Flask Development",
 
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
+  // Use the jammy image as the base image for the development container
+  "image": "mcr.microsoft.com/devcontainers/base:jammy",
 
-	// For use with PHP or Apache (e.g.php -S localhost:8080 or apache2ctl start)
-	"forwardPorts": [8080, 3306]
+  // Forward ports, if needed
+  "forwardPorts": [5000],
 
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "sudo chmod a+x \"$(pwd)\" && sudo rm -rf /var/www/html && sudo ln -s \"$(pwd)\" /var/www/html"
+  // Run post-create commands after the container is created
+  "postCreateCommand": "pip3 install -r requirements.txt",
 
-	// Configure tool-specific properties.
-	// "customizations": {},
+  // Settings to initialize the container for Visual Studio Code
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "python.pythonPath": "/usr/bin/python3"
+    // Add other settings as needed
+  },
 
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+  // Volume mounts (optional) to map local directories into the container
+  "mounts": [
+    "source=/path/to/local/directory,target=/workspace,type=bind,consistency=cached"
+    // Add other mounts as needed
+  ]
 }
