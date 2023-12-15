@@ -2,15 +2,15 @@
 FROM ubuntu:latest
 
 # Install necessary packages, including MariaDB
-RUN apt-get update && \
-    apt-get install -y mariadb-server
+#RUN apt-get update && \
+#    apt-get install -y mariadb-server
 
 # Set the root password for MariaDB (change this as needed)
-RUN echo "mariadb-server-10.5 mysql-server/root_password password yourpassword" | debconf-set-selections && \
-    echo "mariadb-server-10.5 mysql-server/root_password_again password yourpassword" | debconf-set-selections
+#RUN echo "mariadb-server-10.5 mysql-server/root_password password yourpassword" | debconf-set-selections && \
+#    echo "mariadb-server-10.5 mysql-server/root_password_again password yourpassword" | debconf-set-selections
 
 # Expose MariaDB port (optional)
-EXPOSE 3306
+#EXPOSE 3306
 
 # Start the MariaDB service (optional)
-CMD ["service", "mysql", "start"]
+#CMD ["service", "mysql", "start"]

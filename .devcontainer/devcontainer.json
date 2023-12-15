@@ -1,9 +1,13 @@
 {
-    "name": "MyCodespace",
-    "dockerFile": "Dockerfile",
-  
-    // Other configurations...
-  
-    "postCreateCommand": "service mysql start"
-  }
+  "name": "Ubuntu 22.04 Jammy",
+  "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu-22.04",
+
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "bash"
+  },
+
+  "extensions": [],
+
+  "postCreateCommand": "sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove -y && sudo apt-get install mariadb-server -y",
+}
   
