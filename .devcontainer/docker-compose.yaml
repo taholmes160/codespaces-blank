@@ -1,0 +1,26 @@
+# docker-compose.yml
+
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/workspace  # Mounts the current directory to /workspace in the container
+    depends_on:
+      - mariadb  # Depends on the mariadb service
+
+  mariadb:
+    image: mariadb:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password  # Change this to a secure password
+      MYSQL_DATABASE: mydb  # Change this to your database name
+      MYSQL_USER: user  # Change this to your database user
+      MYSQL_PASSWORD: password  # Change this to your database user's password
+    ports:
+      - "3306:3306"  # Expose MySQL port
+
+  # Add other services as needed
