@@ -1,25 +1,9 @@
 {
-  "name": "Python Flask Development",
-
-  // Use the jammy image as the base image for the development container
-  "image": "mcr.microsoft.com/devcontainers/base:jammy",
-
-  // Forward ports, if needed
-  "forwardPorts": [5000],
-
-  // Run post-create commands after the container is created
-  "postCreateCommand": "pip3 install -r requirements.txt",
-
-  // Settings to initialize the container for Visual Studio Code
-  "settings": {
-    "terminal.integrated.shell.linux": "/bin/bash",
-    "python.pythonPath": "/usr/bin/python3"
-    // Add other settings as needed
-  },
-
-  // Volume mounts (optional) to map local directories into the container
-  "mounts": [
-    "source=/path/to/local/directory,target=/workspace,type=bind,consistency=cached"
-    // Add other mounts as needed
-  ]
-}
+    "name": "MyCodespace",
+    "dockerFile": "Dockerfile",
+  
+    // Other configurations...
+  
+    "postCreateCommand": "service mysql start"
+  }
+  
