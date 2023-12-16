@@ -1,24 +1,14 @@
-// .devcontainer/devcontainer.json
-
 {
-    "name": "Python Codespace",
-    "dockerComposeFile": "docker-compose.yml",
-    "service": "app",
-    "workspaceFolder": "/workspace",
-  
-    "extensions": [
-        "ms-python.python"
-        // Other extensions as needed
-    ],
-  
-    "postCreateCommand": "bash .devcontainer/setup-docker.sh && bash .devcontainer/setup-venv.sh && pip install -r /workspace/codespaces-blank/requirements.txt",
-  
-    "settings": {
-        "terminal.integrated.shell.linux": "/bin/bash"
-    },
-  
-    "forwardPorts": [3000, 5000], // Adjust ports as per your application's needs
-  
-    "runArgs": ["--privileged"],
-    "remoteUser": "codespace"
+  "name": "Ubuntu 22.04 Jammy",
+  "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu-22.04",
+
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "bash"
+  },
+
+  "extensions": [],
+
+  "forwardPorts": [3306, 5000],
+
+  "postCreateCommand": "sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove -y && sudo apt-get install -y mariadb-server && sudo service mariadb start && sudo mysql -e \"ALTER USER 'root'@'localhost' IDENTIFIED BY 'T3t0npack@160';\" && sudo apt-get install -y php php-mysql && sudo apt-get install -y wget && sudo wget https://www.adminer.org/latest.php -O /var/www/html/adminer.php && sudo sed -i 's/Listen 80/Listen 8080/' /etc/apache2/ports.conf && sudo service apache2 restart && bash .devcontainer/setup-venv.sh && sudo apt-get install -y python3-pip pkg-config"
 }
